@@ -3,7 +3,6 @@ import { useMoralis, useMoralisFile, useNewMoralisObject } from "react-moralis"
 import emailValidator from "./emailValidator"
 import Moralis from "moralis"
 import contract from "./contract.json"
-// import styles from "./Form.css"
 
 const Subform = (props) => {
   const { setUserData } = useMoralis()
@@ -32,9 +31,9 @@ const Subform = (props) => {
     saveProposal({ fileLink: fileIpfs.toJSON().url })
   }
 
-  const {isSaving, error, save} = useNewMoralisObject("Proposal");
+  const { isSaving, error, save } = useNewMoralisObject("Proposal")
 
-  const saveProposal = save;
+  const saveProposal = save
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -73,12 +72,10 @@ const Subform = (props) => {
   const submitNewProposal = async (projectName, tokensToBeMinted) => {
     await Moralis.enableWeb3()
 
-    const { abi, address } = contract
-
     const options = {
-      contractAddress: address,
+      contractAddress: contract.address,
       functionName: "newProposal",
-      abi: abi,
+      abi: contract.abi,
       params: {
         _projectName: projectName,
         _tokensToBeMinted: tokensToBeMinted,

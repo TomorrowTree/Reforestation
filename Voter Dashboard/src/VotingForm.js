@@ -16,9 +16,7 @@ const VotingForm = (props) => {
     const proposalId = props.proposalId;
         
     const voteOnProposal = async (vote) => {
-        const { abi, address } = contract
-
-        console.log(proposalId, vote)
+        const { abi, address } = contract;
 
         await Moralis.enableWeb3()
 
@@ -56,7 +54,6 @@ const VotingForm = (props) => {
             <img src = {mapImageLink} alt="Map"></img>
             <ul className = "descriptionContainer">
                 {entityData.map(a => {
-                     
                     return(a[1] ?
                         <li key={a[0]}>
                         <div className="keyItem">{a[0]}</div>
